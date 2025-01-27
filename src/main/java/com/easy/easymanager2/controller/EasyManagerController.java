@@ -28,7 +28,6 @@ public class EasyManagerController {
     @Transactional
     public void delete(@PathVariable Integer id){
       var product =  dadosProdutoRepository.getReferenceById(id);
-        product.delete();
     }
 
     @GetMapping

@@ -9,6 +9,8 @@ public record DadosProduto(
         @NotBlank
         String category,
         @NotNull
-        Integer user_id
+        Double cost_price,
+        @NotNull
+        Integer customer_id
 ) {
 }

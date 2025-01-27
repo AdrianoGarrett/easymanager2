@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-@Table(name = "products")
+@Table(name = "dim_products")
 @Entity(name = "Product")
 @Getter
 @AllArgsConstructor
@@ -17,8 +17,10 @@ public class Product {
     private int id;
     private String name;
     private String category;
-    private Integer user_id;
-    private boolean ativo;
+    private Double cost_price;
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
     public Product(){
 
@@ -26,10 +28,10 @@ public class Product {
     public Product(DadosProduto dados) {
         this.name = dados.name();
         this.category = dados.category();
-        this.user_id = dados.user_id();
+        this.cost_price = dados.cost_price();
+        Customer customer = new Customer();
+        customer.setId(dados.customer_id());
+        this.customer = customer;
     }
 
-    public void delete() {
-        this.ativo = false;
-    }
 }
