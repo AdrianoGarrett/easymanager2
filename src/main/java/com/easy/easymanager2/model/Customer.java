@@ -1,5 +1,6 @@
 package com.easy.easymanager2.model;
 
+import com.easy.easymanager2.record.DadosCadastroCustomer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -37,4 +38,16 @@ public class Customer {
     @Temporal(TemporalType.TIMESTAMP)
     private Date registrationDate;
 
+    public Customer(DadosCadastroCustomer dados) {
+        this.firstName = dados.firstName();
+        this.lastName = dados.lastName();
+        this.email = dados.email();
+        this.phoneNumber = Integer.parseInt(dados.phoneNumber().replaceAll("[^\\d]", ""));
+        this.city = dados.city();
+        this.state = dados.state();
+        this.country = dados.country();
+        this.gender = dados.gender();
+        this.registrationDate = new Date();
+
+    }
 }
