@@ -23,14 +23,11 @@ public class Login {
         String username = loginRequest.username();
         String password = loginRequest.password();
 
-        // Verificar se o usuário existe no banco de dados
         Optional<User> user = userRepository.findByLogin(username);
 
         if (user.isPresent() && user.get().getPassword().equals(password)) {
-            // Retornar o tipo de usuário
             return ResponseEntity.ok(new LoginResponse("success", user.get().getRole()));
         } else {
-            // Retornar erro de autenticação
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(new LoginResponse("error", "Credenciais inválidas!"));
         }

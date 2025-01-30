@@ -2,7 +2,7 @@ package com.easy.easymanager2.model;
 
 import jakarta.persistence.*;
 
-@Table(name = "users")
+@Table(name = "dim_users")
 @Entity(name = "User")
 
 public class User {
