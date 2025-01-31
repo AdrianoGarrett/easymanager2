@@ -2,12 +2,7 @@ package com.easy.easymanager2.model;
 
 import com.easy.easymanager2.record.DadosCadastroCustomer;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
 import java.util.Date;
 
 @Table(name = "dim_customers")
@@ -34,6 +29,8 @@ public class Customer {
     private String state;
     private String country;
     private String gender;
+    @Column(name = "company_id")
+    private int companyId;
     @Column(name = "registration_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date registrationDate;
@@ -48,6 +45,6 @@ public class Customer {
         this.country = dados.country();
         this.gender = dados.gender();
         this.registrationDate = new Date();
-
+        this.companyId = Integer.parseInt(dados.companyId());
     }
 }

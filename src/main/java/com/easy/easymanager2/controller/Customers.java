@@ -13,14 +13,14 @@ import java.util.Arrays;
 
 @RestController
 @RequestMapping("/api/customers")
-public class Customers { // OU "CustomerController" se o arquivo for CustomerController.java
+public class Customers {
 
     @Autowired
     private CustomerRepository customerRepository;
 
-    @GetMapping
-    public List<DadosResumidosCustomer> getCustomers() {
-        return customerRepository.findAll().stream().map(DadosResumidosCustomer::new).toList();
+    @GetMapping("/{companyId}")
+    public List<DadosResumidosCustomer> getCustomers(@PathVariable int companyId) {
+        return customerRepository.findByCompanyId(companyId).stream().map(DadosResumidosCustomer::new).toList();
     }
 
     @PostMapping

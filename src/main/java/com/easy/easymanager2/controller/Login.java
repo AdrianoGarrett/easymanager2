@@ -26,7 +26,7 @@ public class Login {
         Optional<User> user = userRepository.findByLogin(username);
 
         if (user.isPresent() && user.get().getPassword().equals(password)) {
-            return ResponseEntity.ok(new LoginResponse("success", user.get().getRole()));
+            return ResponseEntity.ok(user.get());
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(new LoginResponse("error", "Credenciais inválidas!"));

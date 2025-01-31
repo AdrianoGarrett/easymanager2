@@ -1,6 +1,7 @@
 package com.easy.easymanager2.record;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 public record DadosCadastroCustomer (
@@ -21,6 +22,8 @@ public record DadosCadastroCustomer (
         @NotBlank
         String country,
         @NotBlank
-        String gender
+        String gender,
+        @NotBlank
+        String companyId
      ){
 }
